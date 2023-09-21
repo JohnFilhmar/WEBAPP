@@ -36,7 +36,7 @@
         <option value="Art and Crafts"<?= isset($prod['ProductCategory']) && $prod['ProductCategory'] === 'Art and Crafts' ? 'selected' : '' ?>>Art and Crafts</option>
         </select><br>
         <label required for="ProductQuantity">Quantity:</label>
-        <input type="number" id="ProductQuantity" name="ProductQuantity" min="1" max="99" placeholder="1-99"><br>
+        <input type="number" id="ProductQuantity" name="ProductQuantity" min="1" max="99" placeholder="1-99" value="<?= isset($prod['ProductQuantity']) ? $prod['ProductQuantity'] : '' ?>"><br>
         <label></label>
         <input required type="number" name="ProductPrice" placeholder="ProductPrice" value="<?= isset($prod['ProductPrice']) ? $prod['ProductPrice'] : '' ?>"><br>
         <input type="submit" value="SUBMIT">
@@ -61,5 +61,31 @@
         </tr>
         <?php endforeach; ?>
     </table>
+    <h3>Categories</h3>
+    <ul>
+    <?php 
+    $prods = array();
+    $categoryCounts = array();
+    
+    foreach ($products as $p) {
+        $category = $p['ProductCategory'];
+        
+        if (!isset($categoryCounts[$category])) {
+            $categoryCounts[$category] = 1;
+        } else {
+            $categoryCounts[$category]++;
+        }
+        
+        if (!in_array($category, $prods)) {
+            $prods[] = $category;
+        }
+    }
+    
+    foreach ($prods as $category) {
+        echo "<li>" . $category . " - " . $categoryCounts[$category] . "</li>";
+    }
+    
+    ?>
+    </ul>
 </body>
 </html>

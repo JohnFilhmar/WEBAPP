@@ -13,7 +13,7 @@ class TableCategory extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['ProductName','ProductDescription','ProductCategory'];
+    protected $allowedFields    = ['ProductCategory'];
 
     // Dates
     protected $useTimestamps = false;
