@@ -82,7 +82,8 @@
     }
     
     foreach ($prods as $category) {
-        echo "<li>" . $category . " - " . $categoryCounts[$category] . "</li>";
+        echo "<li>" . $category;
+        echo ($categoryCounts[$category] > 1)? " - " . $categoryCounts[$category] : "" . "</li>";
     }
     
     ?>
